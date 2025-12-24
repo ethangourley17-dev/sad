@@ -1,0 +1,7 @@
+{
+  "name": "Nexus AI: Appointment Setter",
+  "description": "High-performance AI outreach and sales assistant platform.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

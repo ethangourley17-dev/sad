@@ -1,0 +1,246 @@
+
+:root {
+  --bg-dark: #050508;
+  --bg-panel: rgba(15, 15, 20, 0.9);
+  --accent-cyan: #00ffff;
+  --accent-gold: #f5d110;
+  --text-dim: #94a3b8;
+  --text-bright: #f8fafc;
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --shadow-glow: 0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+body, html {
+  margin: 0; padding: 0;
+  background: var(--bg-dark);
+  color: var(--text-bright);
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+.nexus-app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.nexus-sidebar {
+  width: 260px;
+  background: rgba(8, 8, 12, 0.98);
+  border-right: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0;
+  z-index: 20;
+}
+
+.nexus-logo {
+  padding: 0 24px 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 900;
+  color: var(--accent-cyan);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 14px 20px;
+  margin: 2px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-item.active {
+  background: rgba(0, 255, 255, 0.1);
+  color: var(--accent-cyan);
+}
+
+.nexus-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+
+.glass {
+  background: var(--bg-panel);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.field {
+  margin-bottom: 24px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.field textarea, .field input {
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  color: white;
+  padding: 16px;
+}
+
+.primary-btn-glow {
+  background: var(--accent-cyan);
+  color: black;
+  border: none;
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-glow);
+}
+
+.simulator-display {
+  height: 400px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 16px;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.msg { padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; max-width: 85%; }
+.msg.ai { background: rgba(0, 255, 255, 0.05); color: var(--accent-cyan); align-self: flex-start; }
+.msg.user { background: rgba(255, 255, 255, 0.05); color: white; align-self: flex-end; }
+
+.funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.funnel-card-wrapper {
+  position: relative;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-glass);
+}
+
+.funnel-stats-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mag-score {
+  background: black;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.sim-lead-btn {
+  background: var(--accent-cyan);
+  color: black;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Analytics Chart */
+.analytics-view { display: flex; flex-direction: column; gap: 32px; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.stat-card-large { text-align: center; }
+.stat-card-large .value { font-size: 3rem; font-weight: 900; margin: 15px 0; }
+.glow-text-cyan { color: var(--accent-cyan); text-shadow: var(--shadow-glow); }
+.glow-text-gold { color: var(--accent-gold); }
+.stat-footer { font-size: 0.75rem; color: var(--text-dim); }
+
+.sim-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 200px;
+  padding-top: 40px;
+}
+
+.bar {
+  width: 10%;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  transition: 0.3s;
+}
+
+.bar.active { background: var(--accent-cyan); box-shadow: var(--shadow-glow); }
+.bar span { position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; color: var(--text-dim); }
+
+/* Leads Table */
+.leads-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+.leads-table th { text-align: left; padding: 10px 20px; font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); }
+.leads-table td { background: rgba(255,255,255,0.02); padding: 20px; border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); }
+.leads-table tr td:first-child { border-left: 1px solid var(--border-glass); border-radius: 12px 0 0 12px; }
+.leads-table tr td:last-child { border-right: 1px solid var(--border-glass); border-radius: 0 12px 12px 0; }
+
+.avatar { width: 32px; height: 32px; background: var(--accent-cyan); color: black; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; }
+.lead-name-cell { display: flex; align-items: center; gap: 15px; font-weight: 600; }
+.status-badge { padding: 4px 12px; border-radius: 99px; font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); }
+.status-badge.pending { color: var(--accent-cyan); background: rgba(0, 255, 255, 0.1); }
+
+.call-btn-action {
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.call-btn-action:hover { background: var(--accent-cyan); color: black; }
+.active-campaign-badge { background: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 8px; border-radius: 8px; text-align: center; font-size: 0.8rem; }
